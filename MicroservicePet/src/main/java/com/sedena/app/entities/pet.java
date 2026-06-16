@@ -1,0 +1,115 @@
+package com.sedena.app.entities;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="pets")
+public class pet {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	
+	@Column(length = 50)
+	private String name;
+	
+	@Column(length = 50)
+	private String spice;
+	
+	@Column(length = 50)
+	private String breed;
+	
+	private int age;
+	
+	@Column(length = 50)
+	private String size;
+	
+	@Column(length = 20)
+	private String sex;
+	
+	@Column(name="Health_Status",length = 150)
+	private String healthStatus;
+	
+	@Column(length = 200)
+	private String description;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="Adoption_Status",length=30,nullable = false)
+	private AdoptionStatus AdoptionStatus;
+	
+	@PrePersist
+	public void preInsertDataBase(){
+		if(AdoptionStatus==null) {
+			AdoptionStatus = AdoptionStatus.AVAILABLE;
+		}
+	}
+	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getSpice() {
+		return spice;
+	}
+	public void setSpice(String spice) {
+		this.spice = spice;
+	}
+	public String getBreed() {
+		return breed;
+	}
+	public void setBreed(String breed) {
+		this.breed = breed;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public String getSize() {
+		return size;
+	}
+	public void setSize(String size) {
+		this.size = size;
+	}
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+	public String getHealthStatus() {
+		return healthStatus;
+	}
+	public void setHealthStatus(String healthStatus) {
+		this.healthStatus = healthStatus;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	public AdoptionStatus getAdoptionStatus() {
+		return AdoptionStatus;
+	}
+	public void setAdoptionStatus(AdoptionStatus adoptionStatus) {
+		AdoptionStatus = adoptionStatus;
+	}
+}
