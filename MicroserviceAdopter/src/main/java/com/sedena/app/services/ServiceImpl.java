@@ -33,8 +33,8 @@ public class ServiceImpl implements IService {
  }
 
  @Override
- public List<Adopter> findByEmail(String email) {
-  return dao.searchByEmail(email);
+ public Adopter findByEmail(String email) {
+  return dao.searchByEmail(email).orElseThrow();
  }
  
  @Override
