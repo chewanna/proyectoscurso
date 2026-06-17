@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.sedena.app.entities.Adopter;
 
-@FeignClient(name="microserviceadopter",url="http://localhost:9092")
+@FeignClient(name="microserviceadopter")
 public interface IAdopterFeign {
 	@GetMapping("/adopter/id/{id}")
 	Adopter findById(@PathVariable long id);

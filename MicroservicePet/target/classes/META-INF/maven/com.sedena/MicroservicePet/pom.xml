@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.sedena</groupId>
-	<artifactId>MicroserviceAdoptionRequest</artifactId>
+	<artifactId>MicroservicePet</artifactId>
 	<version>1.0.0</version>
-	<name>MicroserviceAdoptionRequest</name>
+	<name>MicroservicePet</name>
 	<description>MicroservicePet CRUD</description>
 	<url/>
 	<licenses>
