@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sedena.app.entities.AdoptionStatus;
-import com.sedena.app.entities.pet;
+import com.sedena.app.entities.Pet;
 import com.sedena.app.services.IServices;
 
 @RestController
@@ -29,7 +29,7 @@ public class MicroserviceController {
  }
  
  @PostMapping
- public ResponseEntity<String> insert(@RequestBody pet p){
+ public ResponseEntity<String> insert(@RequestBody Pet p){
   try {
    if(service.insert(p))
     return new ResponseEntity<>("inserted", HttpStatus.OK);
@@ -41,7 +41,7 @@ public class MicroserviceController {
  }
  
  @GetMapping
- public ResponseEntity<List<pet>> findAll(){
+ public ResponseEntity<List<Pet>> findAll(){
   try {
    return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
   }catch(Exception e) {
@@ -50,7 +50,7 @@ public class MicroserviceController {
  }
  
  @GetMapping("/id/{id}")
- public ResponseEntity<pet> findById(@PathVariable("id") long id){
+ public ResponseEntity<Pet> findById(@PathVariable("id") long id){
   try {
    
    return new ResponseEntity<>(service.findById(id), HttpStatus.OK);
@@ -62,7 +62,7 @@ public class MicroserviceController {
  }
  
  @GetMapping("/specie/{specie}")
- public ResponseEntity<List<pet>> findBySpecie(@PathVariable("specie") String specie){
+ public ResponseEntity<List<Pet>> findBySpecie(@PathVariable("specie") String specie){
   try {
    return new ResponseEntity<>(service.findBySpecie(specie), HttpStatus.OK);
   }catch(Exception e) {
@@ -74,7 +74,7 @@ public class MicroserviceController {
 
  
  @GetMapping("/adoption/{status}")
- public ResponseEntity<List<pet>> findByAdoptionStatus(@PathVariable("status") AdoptionStatus status){
+ public ResponseEntity<List<Pet>> findByAdoptionStatus(@PathVariable("status") AdoptionStatus status){
   try {
    return new ResponseEntity<>(service.findByAdoptionStatus(status), HttpStatus.OK);
   }catch(Exception e) {
@@ -85,7 +85,7 @@ public class MicroserviceController {
  
  
  @PutMapping
- public ResponseEntity<String> updateById(@RequestBody pet p){
+ public ResponseEntity<String> updateById(@RequestBody Pet p){
   try {
    if(service.update(p))
      return new ResponseEntity<>("updated", HttpStatus.OK);
@@ -101,25 +101,24 @@ public class MicroserviceController {
  }
  
  
- @PatchMapping//actualización parcial-> PATCH->http://ip:port/pet?id=id,status=AVAILABLE
+ @PutMapping("/status")//actualización parcial-> PATCH->http://ip:port/pet?id=id,status=AVAILABLE
  public ResponseEntity<String> updateAdoptionStatus(
    @RequestParam("id") long id, 
    @RequestParam("status") AdoptionStatus status
    ){
-  try {
-   if(service.udpateAdoptionStatus(id, status))
-    return new ResponseEntity<>("updated", HttpStatus.OK);
-   else
-    return new ResponseEntity<>("bad request", HttpStatus.BAD_REQUEST);
-  }catch(NoSuchElementException e) {
-   return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-  }catch(Exception e) {
-   return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-  }
+	 try {
+		 if(service.udpateAdoptionStatus(id, status))
+			 return new ResponseEntity<>("updated", HttpStatus.OK);
+		 else
+			 return new ResponseEntity<>("bad request", HttpStatus.BAD_REQUEST);
+	 }catch(NoSuchElementException e) {
+		 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	 }catch(Exception e) {
+		 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
   
  }
  
-
 }
  
  

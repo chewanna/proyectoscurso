@@ -1,0 +1,8 @@
+package com.sedena.app.entities;
+
+public enum AdoptionStatus {
+	AVAILABLE,
+	IN_PROCESS,
+	ADOOPTED
+	
+}

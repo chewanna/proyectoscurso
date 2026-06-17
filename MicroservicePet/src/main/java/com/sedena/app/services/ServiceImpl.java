@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.sedena.app.daos.IMicroserviceDAO;
 import com.sedena.app.entities.AdoptionStatus;
-import com.sedena.app.entities.pet;
+import com.sedena.app.entities.Pet;
 
 @Service
 public class ServiceImpl implements IServices {
@@ -20,31 +20,31 @@ public class ServiceImpl implements IServices {
  
 
  @Override
- public boolean insert(pet p) {
+ public boolean insert(Pet p) {
   if(p.getId()==0) {
-   pet result=dao.save(p);
+   Pet result=dao.save(p);
    return result!=null;
   }
   return false;
  }
 
  @Override
- public List<pet> findAll() {
-  return (List<pet>)dao.findAll();
+ public List<Pet> findAll() {
+  return (List<Pet>)dao.findAll();
  }
 
  @Override
- public List<pet> findBySpecie(String specie) {
+ public List<Pet> findBySpecie(String specie) {
   return dao.searchBySpecie(specie);
  }
 
  @Override
- public List<pet> findByAdoptionStatus(AdoptionStatus status) {
+ public List<Pet> findByAdoptionStatus(AdoptionStatus status) {
   return dao.searchByAdoptionStatus(status);
  }
 
  @Override
- public boolean update(pet p) {
+ public boolean update(Pet p) {
   if(dao.existsById(p.getId())) {
    return dao.save(p)!=null;
    
@@ -54,7 +54,7 @@ public class ServiceImpl implements IServices {
 
  @Override
  public boolean udpateAdoptionStatus(long id, AdoptionStatus status) {
-  pet search=dao.findById(id).orElseThrow();
+  Pet search=dao.findById(id).orElseThrow();
   search.setAdoptionStatus(status);
   return dao.save(search)!=null;
  }
@@ -70,7 +70,7 @@ public class ServiceImpl implements IServices {
  }
  
  @Override
- public pet findById(long id) {
+ public Pet findById(long id) {
 	 return dao.findById(id).orElseThrow();
  }
  
