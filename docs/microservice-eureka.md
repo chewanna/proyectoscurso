@@ -20,3 +20,8 @@ Para crear este microservicio en Spring Initializr se debe agregar:
 
 ## Configuración principal
 Para este proyecto, Eureka Server usará el puerto 9999.
+
+## Variables de ambiente usadas por el microservicio
+- **PORT default(8888)**: Representa el puerto donde se ejecuta el microservicio.
+- **EUREKA_IP default(localhost)**: IP del servidor de descubrimiento eureka.
+- **EUREKA_PORT default(9999)**: Puerto de conexión al servidor de descubrimiento.
