@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.sedena</groupId>
-	<artifactId>MicroserviceAdoptionRequest</artifactId>
+	<artifactId>MicroserviceAdopter</artifactId>
 	<version>1.0.0</version>
-	<name>MicroserviceAdoptionRequest</name>
+	<name>MicroserviceAdopter</name>
 	<description>MicroservicePet CRUD</description>
 	<url/>
 	<licenses>
@@ -73,10 +73,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>

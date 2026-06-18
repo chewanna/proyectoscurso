@@ -26,3 +26,9 @@ PENDING,
 APPROVED,
 REJECTED
 }
+```
+### Implementación de Resilience4j
+Al comunicarse con los microservicios **microservicepet y microserviceadopter** se implementa el patrón de diseño de **Circuit Breaker** en la implementación del Servicio (**ServiceImpl**).
+
+### Se agrega el siguiente starter
+- Resilience4j de spring cloud.
